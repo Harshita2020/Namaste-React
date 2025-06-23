@@ -1,0 +1,28 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is namaste react by harshita adya",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harshita2020/Namaste-React.git"
+  },
+  "keywords": [],
+  "author": "Harshita Adya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Harshita2020/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/Harshita2020/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  }
+}
