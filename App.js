@@ -1,104 +1,91 @@
-// const heading = React.createElement("h1", {id: "heading"}, "Hello Welcome to Namaste React!");
-// console.log(heading)
-// const root= ReactDOM.createRoot(document.getElementById("root"));
-
-// root.render(heading)
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/**
- * <div id="parent">
- *      <div id="child">
- *          <h1 id="heading">
- *            Hey! Im a heading!  
- *              
- *          </h1>
- *          <p>
- *              Hi i am a paragraph!
- *          </p>
- *      </div>
- * </div>
- * 
- * 
- *   createElement(Object) => HTML(Browser Understands)
- * 
- */
-
-// const parent = React.createElement("div", {id: "parent"}, [
-//                 React.createElement("div", {id: "child"}, [
-//                     React.createElement("h1", {id: "heading"}, "Hey! I am a heading!"),
-//                     React.createElement("p", {id: "paragraph"}, "Hey! I am a paragraph! "),
-//                     React.createElement("ul", {id: "ul"}, [ 
-//                         React.createElement("h4", {}, "List of Fruits!"),
-//                         React.createElement("li", {}, "Apples"),
-//                         React.createElement("li", {}, "Bananas"),
-//                         React.createElement("li", {}, "Grapes"),
-//                         React.createElement("li", {}, "Litchis"),
-//                         React.createElement("li", {}, "Peaches"),
-//                     ])
-//                 ]),
-//                 React.createElement("div", {id: "child2"}, [
-//                     React.createElement("h1", {id: "heading"}, "Hey! I am a heading!"),
-//                     React.createElement("p", {id: "paragraph"}, "Hey! I am a paragraph! "),
-//                     React.createElement("ul", {id: "ul"}, [ 
-//                         React.createElement("h4", {}, "List of Fruits!"),
-//                         React.createElement("li", {}, "Apples"),
-//                         React.createElement("li", {}, "Bananas"),
-//                         React.createElement("li", {}, "Grapes"),
-//                         React.createElement("li", {}, "Litchis"),
-//                         React.createElement("li", {}, "Peaches"),
-//                     ])
-//                 ])
-//  ])
-
-// console.log(parent)
-
-//  const root = ReactDOM.createRoot(document.getElementById("root"))
-
-//  root.render(parent)
-
-//////////////////////////////////////////////////////////////////////////
-
-/***
- * 
- * <ul  >
- *      <li></li>
- *      <li></li>
- *      <li></li>
- *      <li></li>
- *      <li></li>
- *      <li></li>
- * </ul>
- * 
- * 
- */
 import React from "react";
 import ReactDOM from "react-dom/client";
+import logo from "./assets/res-logo.jpg";
 
-const navbar = React.createElement("div", { id: "parent" },
-  React.createElement("ul", { id: "navul" },
-    [
-      React.createElement("li", { className: "navli", key: "home" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Home")
-      ),
-      React.createElement("li", { className: "navli", key: "about" },
-        React.createElement("a", { className: "anchor", href: "#" }, "About")
-      ),
-      React.createElement("li", { className: "navli", key: "contact" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Contact Us")
-      ),
-      React.createElement("li", { className: "navli", key: "login" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Login")
-      ),
-      React.createElement("li", { className: "navli", key: "signup" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Sign Up")
-      )
-    ]
+/**
+ *
+ * - Header
+ *    - Logo
+ *    - Nav Items
+ * - Body
+ *    - Search
+ *    - Resaurant Container
+ *      - Res cards
+ *        - Image
+ *        - name of res
+ *        - rating, cuisine,
+ * - Footer
+ *    - CopyRight
+ *    - Links
+ *    - Address
+ *    - Contact
+ */
+
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src="https://cdn.vectorstock.com/i/1000x1000/58/02/logo-restaurant-food-orange-color-vector-22725802.webp"
+          alt="Logo"
+        />
+      </div>
+      <div className="nav-items">
+        <ul>
+          {" "}
+          {/* className="navul" */}
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+
+ const RestaurantCard = () => {
+  return (
+    <div className="res-card" >
+      <img className="res-logo" alt="res-logo" src = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/FOOD_CATALOG/IMAGES/CMS/2025/6/6/5f5b503d-cd27-4eb8-8ffe-0faf1a5716c4_02c2beab-d74d-4cc4-9569-4dd1cc785959.jpg"/>
+      <h3>Meghna Foods</h3>
+      <p className="res-cuisine">Biryani, North Indian, Asian</p>
+      <h4>4.4 stars</h4>
+      <h4>38 minutes</h4>
+    </div>
   )
-);
-
+ }
+const Body = () => {
+  return (
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+        <RestaurantCard/>
+      </div>
+    </div>
+  );
+};
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body/>
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(navbar);
+root.render(<AppLayout />);
