@@ -19,3 +19,27 @@
 - Lazy dev builds
 - Tree Shaking - remove unused codes
 - Different dev and prod bundles
+
+
+# Namaste Food
+/**
+ *
+ * - Header
+ *    - Logo
+ *    - Nav Items
+ * - Body
+ *    - Search
+ *    - Resaurant Container
+ *      - Res cards
+ *        - Image
+ *        - name of res
+ *        - rating, cuisine,
+ * - Footer
+ *    - CopyRight
+ *    - Links
+ *    - Address
+ *    - Contact
+ */
+
+
+ - REACT HOOKS - USESTATE
