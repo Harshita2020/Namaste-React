@@ -89,3 +89,28 @@
   border: none;
   border-radius: 10px;
 }
+
+.shimmer-container{
+    display: flex;
+  flex-wrap: wrap;
+
+}
+
+.shimmer-card{
+    height: 300px;
+  width: 200px;
+  /* border: 1px solid black; */
+  padding: 10px;
+  margin: 20px;
+  background-color: #f0e4e4;
+
+}
+
+.shimmer-search{
+    margin: 10px;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+
+}
