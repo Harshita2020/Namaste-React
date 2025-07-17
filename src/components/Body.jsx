@@ -79,7 +79,7 @@ const Body = () => {
   //   },
   // ]);
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
-
+  const [searchText, setSearchText] = useState("");
   useEffect(
     () => {
       fetchData();
@@ -93,12 +93,12 @@ const Body = () => {
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await response.json();
-      console.log("response", json);
-      console.log(
-        "response",
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
+      // console.log("response", json);
+      // console.log(
+      //   "response",
+      //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      //     ?.restaurants
+      // );
       setListOfRestaurants(
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
@@ -114,18 +114,35 @@ const Body = () => {
         // (res) => res?.card?.card?.info?.avgRating > 4
       )
     );
-    console.log(listOfRestaurants);
+    // console.log(listOfRestaurants);
     return listOfRestaurants;
   };
 
   // if(listOfRestaurants.length === 0){
   //   return <Shimmer />
   // }
+  // console.log(searchText)
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
       <div className="search">
+        <input
+          className="search-filter"
+          type="text"
+          placeholder="Search...."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        ></input>
+        <button className="filter-btn" onClick={() => {
+          console.log(listOfRestaurants)
+          const filteredListOfrestaurant = listOfRestaurants.filter((res) => res?.info?.name.includes(searchText))
+          // const filteredListOfrestaurant = listOfRestaurants.filter((res) => console.log(res?.info?.name))
+          console.log(filteredListOfrestaurant)
+          setListOfRestaurants(filteredListOfrestaurant)
+          }}>
+          Search
+        </button>
         <button className="filter-btn" onClick={handleFilter}>
           {" "}
           Top Rated Restaurants{" "}
