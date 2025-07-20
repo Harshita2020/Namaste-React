@@ -79,6 +79,7 @@ const Body = () => {
   //   },
   // ]);
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredResaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false)
   useEffect(
@@ -96,6 +97,7 @@ const Body = () => {
       const response = await fetch(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
+      console.log("response", response)
       const json = await response.json();
       // console.log("response", json);
       // console.log(
@@ -107,6 +109,10 @@ const Body = () => {
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
+      setFilteredRestaurants(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
     } catch (err) {
       console.error("ERROR", err);
     } finally{
@@ -114,7 +120,7 @@ const Body = () => {
     }
   };
   const handleFilter = () => {
-    setListOfRestaurants(
+    setFilteredRestaurants(
       listOfRestaurants.filter(
         (res) => res?.info?.avgRating > 4.5
       )
@@ -141,7 +147,7 @@ const Body = () => {
         ></input>
         <button className="filter-btn" onClick={() => {
           console.log(listOfRestaurants)
-          const filteredListOfrestaurant = listOfRestaurants.filter((res) => res?.info?.name.includes(searchText))
+          const filteredListOfrestaurant = listOfRestaurants.filter((res) => res?.info?.name.toLowerCase().includes(searchText.toLowerCase()))
           // const filteredListOfrestaurant = listOfRestaurants.filter((res) => console.log(res?.info?.name))
           console.log(filteredListOfrestaurant)
           filteredListOfrestaurant.length !==0 ? setListOfRestaurants(filteredListOfrestaurant) : setListOfRestaurants([])
@@ -153,9 +159,9 @@ const Body = () => {
           Top Rated Restaurants{" "}
         </button>
       </div>
-      {listOfRestaurants?.length !==0 ?
+      {filteredResaurants?.length !==0 ?
       (<div className="res-container">
-        {listOfRestaurants.map((res) => (
+        {filteredResaurants.map((res) => (
           <RestaurantCard key={res?.info?.id} resData={res} />
         ))}
       </div>) : <div>No data found!</div>}
