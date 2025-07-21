@@ -150,7 +150,7 @@ const Body = () => {
           const filteredListOfrestaurant = listOfRestaurants.filter((res) => res?.info?.name.toLowerCase().includes(searchText.toLowerCase()))
           // const filteredListOfrestaurant = listOfRestaurants.filter((res) => console.log(res?.info?.name))
           console.log(filteredListOfrestaurant)
-          filteredListOfrestaurant.length !==0 ? setListOfRestaurants(filteredListOfrestaurant) : setListOfRestaurants([])
+          filteredListOfrestaurant.length !==0 ? setFilteredRestaurants(filteredListOfrestaurant) : setFilteredRestaurants([])
           }}>
           Search
         </button>

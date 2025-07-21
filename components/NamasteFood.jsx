@@ -1,17 +1,4 @@
-import Header from "../src/components/Header";
-import Body from "../src/components/Body";
 
-
-
-
-export const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
 
 
 /**
