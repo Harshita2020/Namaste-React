@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import { AppLayout } from "../components/NamasteFood";
 
 import Header from "../src/components/Header";
@@ -13,27 +13,35 @@ export const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet  />
     </div>
   );
-};
+};  
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement: <Error/>
+    errorElement: <Error />,
+    children: [
+      {
+        path: '/',
+        element: <Body />,
+        errorElement:<Error/>
+      },
+      {
+        path: "/about",
+        element: <About />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+        errorElement: <Error />,
+      },
+    ],
   },
-  {
-    path: "/about",
-    element: <About />,
-    errorElement: <Error/>
-  },
-  {
-    path: "/contact-us",
-    element: <ContactUs />,
-    errorElement: <Error/>
-  },
+
   {
     path: "*",
     element: <NotFound />, // your custom 404 component
