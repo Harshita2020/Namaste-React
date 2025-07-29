@@ -7,6 +7,7 @@
   box-sizing: border-box;
 }
 
+
 .header {
   background-color: antiquewhite;
   justify-content: space-between;
@@ -60,7 +61,7 @@
   cursor: pointer;
 }
 
-.res-container{
+.res-container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -81,8 +82,7 @@
   /* outline:   none; */
 }
 
-
-.filter-btn{
+.filter-btn {
   margin: 10px;
   cursor: pointer;
   padding: 10px;
@@ -90,32 +90,29 @@
   border-radius: 10px;
 }
 
-.shimmer-container{
-    display: flex;
+.shimmer-container {
+  display: flex;
   flex-wrap: wrap;
-
 }
 
-.shimmer-card{
-    height: 300px;
+.shimmer-card {
+  height: 300px;
   width: 200px;
   /* border: 1px solid black; */
   padding: 10px;
   margin: 20px;
   background-color: #f0e4e4;
-
 }
 
-.shimmer-search{
-    margin: 10px;
+.shimmer-search {
+  margin: 10px;
   cursor: pointer;
   padding: 10px;
   border: none;
   border-radius: 10px;
-
 }
 
-.login-btn{
+.login-btn {
   padding: 10px;
   cursor: pointer;
   margin: 30px 10px;
@@ -126,8 +123,37 @@
   font-size: 20px;
 }
 
-.search-filter{
+.search-filter {
   padding: 10px;
   border-radius: 10px;
-  width: 300px
+  width: 300px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px;
+  background-color: #f0e4e4;
+  width: 800px;
+  
+}
+
+.menu-container{
+  display: flex;
+  /* margin: 0 auto; */
+
+  justify-content: center;  /* horizontal centering */
+  align-items: center;      /* vertical centering */
+}
+
+
+.menu-logo {
+  height: 300px;
+  width: 400px;
+  /* padding:10px */
+  margin:10px;
 }
