@@ -1,41 +1,17 @@
-import { useEffect, useState } from "react";
-import { CDN_URL } from "../utils/constants";
-// import Shimmer from "./Shimmer"
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants";
+import Shimmer from "./Shimmer";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
-  const [data, setData] = useState([]);
   const { resId } = useParams();
-  console.log("resId", resId);
 
-  useEffect(() => {
-    fetchMenuData();
-  }, []);
-
-  const fetchMenuData = async () => {
-    const response = await fetch(MENU_API + resId);
-    const json = await response.json();
-    console.log("jsoon: ", json);
-    setData(json?.data?.cards[2].card.card.info);
-  };
-  // data const {name,avgRating, costForTwo, cuisines} = data[1]?.info
-
+  const data = useRestaurantMenu(resId);
+  if (data === null) return <Shimmer />;
   return data == [] ? (
     <Shimmer />
   ) : (
     <div className="menu-container">
       <div className="menu">
-        {}
-        {/* <img
-                    className="menu-logo"
-                    alt="res-logo"
-                    src={
-                      CDN_URL +
-                      data[1]?.info?.cloudinaryImageId
-                    }
-                  /> */}
         <h1>{data.name}</h1>
-        {/* <p>{data.cuisines.join(", ")}</p> */}
         <h3>
           ✨{data.avgRatingString} ({data?.totalRatingsString}) *{" "}
           {data?.costForTwoMessage}
