@@ -9,16 +9,16 @@ const RestaurantCard = (props) => {
   // const { deliveryTime } = resData?.info?.sla;
   // console.log(resData.card.card.info.cloudinaryImageId);
   return (
-    <div className="res-card">
+    <div className="m-4 p-4 w-[300px] bg-gray-100 rounded-lg hover:bg-gray-200">
       <img
-        className="res-logo"
+        className="rounded-lg"
         alt="res-logo"
         src={
           CDN_URL +
           cloudinaryImageId
         }
       />
-      <h3>{name}</h3>
+      <h3 className="font-bold text-lg py-4">{name}</h3>
       <p className="res-cuisine">{cuisines.join(", ")}</p>
       <h4>{avgRating}✨</h4>
       <h4>{costForTwo}</h4>
