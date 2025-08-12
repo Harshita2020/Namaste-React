@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.header {
+  background-color: antiquewhite;
+  justify-content: space-between;
+  overflow: hidden;
+  display: flex;
+}
+.logo {
+  width: 100px;
+}
+
+.nav-items > ul {
+  list-style: none;
+  display: flex;
+  margin-right: 20px;
+  font-size: 25px;
+}
+
+.nav-items > ul > li {
+  margin: 30px 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.res-card {
+  /* height: 300px; */
+  width: 200px;
+  /* border: 1px solid black; */
+  padding: 10px;
+  margin: 20px;
+  background-color: #f0e4e4;
+}
+
+.search {
+  padding: 10px;
+}
+
+.res-logo {
+  height: 150px;
+  width: 180px;
+  /* padding:10px */
+}
+
+.res-cuisine {
+  padding: 10px 0px;
+  font-size: 12px;
+  color: rgba(42, 33, 33, 0.5);
+}
+
+.res-card:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  cursor: pointer;
+}
+
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.anchor {
+  text-decoration: none;
+  color: black;
+  /* font-weight: bold; */
+  padding: 5px;
+}
+
+.anchor:hover {
+  text-shadow: 1px 1px 2px pink;
+}
+
+.anchor:focus {
+  color: blue;
+  /* outline:   none; */
+}
+
+.filter-btn {
+  margin: 10px;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  height: 300px;
+  width: 200px;
+  /* border: 1px solid black; */
+  padding: 10px;
+  margin: 20px;
+  background-color: #f0e4e4;
+}
+
+.shimmer-search {
+  margin: 10px;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.login-btn {
+  padding: 10px;
+  cursor: pointer;
+  margin: 30px 10px;
+  /* height: 50px; */
+  width: 100px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.search-filter {
+  padding: 10px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px;
+  background-color: #f0e4e4;
+  width: 800px;
+  
+}
+
+.menu-container{
+  display: flex;
+  /* margin: 0 auto; */
+
+  justify-content: center;  /* horizontal centering */
+  align-items: center;      /* vertical centering */
+}
+
+
+.menu-logo {
+  height: 300px;
+  width: 400px;
+  /* padding:10px */
+  margin:10px;
+}
