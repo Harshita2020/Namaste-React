@@ -3,11 +3,17 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
+  let loginBtn = "login"
   const [loginBtnName, setLoginBtnName] = useState("Login")
   const onlineStatus = useOnlineStatus();
   const handleLoginBtnNameToggle = () => {
     const name = loginBtnName === "Login" ? "Logout" : "Login"
     setLoginBtnName(name)
+    
+    loginBtn = loginBtn === "Login" ? "Logout" : "Login"
+    // loginBtn = name1;
+    console.log("loginBtn", loginBtn)
+
   }
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg mb-2">
@@ -24,7 +30,7 @@ const Header = () => {
           <li className="px-4"> <Link to="/contact-us">Contact</Link></li>
           <li className="px-4"> <Link to="/grocery">Grocery</Link></li>
           <li className="px-4">Cart</li>
-          <button className="login-btn" onClick={() => handleLoginBtnNameToggle()}>{loginBtnName}</button>
+          <button className="login-btn" onClick={() => handleLoginBtnNameToggle()}>{loginBtn}</button>
         </ul>
       </div>
       {/* <div>

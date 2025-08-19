@@ -30,10 +30,10 @@ const RestaurantCard = (props) => {
 export const isRestaurantOpen = (RestaurantCard) => {
   return (props) => {
     return (
-      <>
-        <label>Open</label>
+      <div className="relative">
+        <label className="bg-green-600 p-2 border-gray-600-solid rounded-md text-white absolute left-4 w-18 text-center font-bold">Open</label>
         <RestaurantCard {...props}/>
-      </>
+      </div>
     )
   }
 }
