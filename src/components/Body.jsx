@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import resList from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {isRestaurantOpen} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { SWIGGY_API } from "../utils/constants";
+
+const RestaurantOpenCard = isRestaurantOpen(RestaurantCard)
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredResaurants, setFilteredRestaurants] = useState([]);
@@ -81,7 +83,7 @@ const Body = () => {
         <button
           className="mx-4 px-4 py-2 bg-green-100 hover:bg-green-200 rounded-lg cursor-pointer"
           onClick={() => {
-            console.log(listOfRestaurants);
+            console.log("listOfRestaurants",listOfRestaurants);
             const filteredListOfrestaurant = listOfRestaurants.filter((res) =>
               res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
             );
@@ -104,7 +106,10 @@ const Body = () => {
         <div className="flex flex-wrap">
           {filteredResaurants.map((res) => (
             <Link key={res?.info?.id} to={"/restaurants/" + res?.info?.id}>
-              <RestaurantCard resData={res} />
+              {
+                res?.info?.isOpen ? <RestaurantOpenCard resData={res}/> : <RestaurantCard resData={res}/>
+              }
+              {/* <RestaurantCard resData={res} /> */}
             </Link>
           ))}
         </div>
