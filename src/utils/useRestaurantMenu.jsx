@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MENU_API } from "./constants";
 const useRestaurantMenu = (resId) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   useEffect(() => {
     fetchMenuData();
   }, []);
@@ -9,7 +9,8 @@ const useRestaurantMenu = (resId) => {
   const fetchMenuData = async () => {
     const response = await fetch(MENU_API + resId);
     const json = await response.json();
-    setData(json?.data?.cards[2].card.card.info);
+    console.log("DATA", json)
+    setData(json);
   };
   return data;
 };
