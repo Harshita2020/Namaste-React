@@ -1,22 +1,31 @@
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { div } from "framer-motion/client";
+import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const { resId } = useParams();
 
   const resData = useRestaurantMenu(resId);
-  resData !== null && console.log("Data: " , resData)
-  const data = resData?.data?.cards[2].card.card.info
-
+  resData !== null && console.log("Data: ", resData);
+  const data = resData?.data?.cards[2].card.card.info;
+  const menuData =
+    resData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  // console.log("-------------MENU DATA: --------------", menuData)
+  const menuItems = menuData?.filter((menuItem) =>
+    menuItem?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+  console.log("-------------MENU ITEMS: --------------", menuItems);
+  // console.log(first)
   if (!resData) return <Shimmer />;
   return resData == null ? (
     <Shimmer />
   ) : (
     <div className="flex mx-auto">
-      <div className="font-bold px-4 py-8 my-4 flex flex-col text-left mx-auto w-1/2">
+      <div className=" px-4 py-8 my-4 flex flex-col text-left mx-auto w-1/2">
         <h1 className="font-bold py-2 my-4 text-left text-3xl ">{data.name}</h1>
         <div
-          className="border border-gray-200 rounded-2xl p-6 
+          className="font-bold border border-gray-200 rounded-2xl p-6 
   shadow-[0_6px_10px_rgba(0,0,0,0.1),4px_0_6px_rgba(0,0,0,0.05),-4px_0_6px_rgba(0,0,0,0.05)] bg-white"
         >
           <h3>
@@ -87,10 +96,30 @@ const RestaurantMenu = () => {
               />
             </svg>
           </div>
-       
-          {
-
-          }
+          {menuItems.map((category, i) => {
+            return  <RestaurantCategory key={i} data={category?.card?.card}/>
+          })}
+          {menuItems.map((menuItem) => {
+            return (
+              <div key={menuItem?.card?.card?.categoryId}>
+                <div className="m-4 p-4 bg-amber-100 justify-between items-center">
+                  {menuItem?.card?.card?.title} ({menuItem?.card?.card?.itemCards.length})
+                  🔽
+                </div>
+                <div className="pl-4 ml-4 border-l-8 border-orange-200">
+                  {menuItem?.card?.card?.itemCards?.map((itemCard, i) => {
+                    // console.log("itemCard found!!!", itemCard?.card?.info?.id);
+                    return (
+                      <div key={itemCard?.card?.info?.id}>
+                        {itemCard?.card?.info?.name} - &nbsp;
+                        {itemCard?.card?.info?.description}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
