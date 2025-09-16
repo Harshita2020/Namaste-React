@@ -99,7 +99,7 @@ const RestaurantMenu = () => {
           {menuItems.map((category, i) => {
             return  <RestaurantCategory key={i} data={category?.card?.card}/>
           })}
-          {menuItems.map((menuItem) => {
+          {/* {menuItems.map((menuItem) => {
             return (
               <div key={menuItem?.card?.card?.categoryId}>
                 <div className="m-4 p-4 bg-amber-100 justify-between items-center">
@@ -119,7 +119,7 @@ const RestaurantMenu = () => {
                 </div>
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
     </div>
