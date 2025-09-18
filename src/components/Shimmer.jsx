@@ -11,11 +11,11 @@ const Shimmer = () => {
       </div>
 
     <div className="shimmer-container">
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
-      <div className="shimmer-card"></div>
+      <div className="m-4 p-4 w-[300px] h-[200px] flex flex-wrap bg-gray-100 rounded-lg hover:bg-gray-200"></div>
+      <div className="m-4 p-4 w-[300px] h-[200px] flex flex-wrap bg-gray-100 rounded-lg hover:bg-gray-200"></div>
+      <div className="m-4 p-4 w-[300px] h-[200px] flex flex-wrap bg-gray-100 rounded-lg hover:bg-gray-200"></div>
+      <div className="m-4 p-4 w-[300px] h-[200px] flex flex-wrap bg-gray-100 rounded-lg hover:bg-gray-200"></div>
+      <div className="m-4 p-4 w-[300px] h-[200px] flex flex-wrap bg-gray-100 rounded-lg hover:bg-gray-200"></div>
     </div>
     </>
   );

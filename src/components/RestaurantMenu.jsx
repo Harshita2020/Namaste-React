@@ -1,22 +1,26 @@
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
+import { useState } from "react";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { div } from "framer-motion/client";
 import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const { resId } = useParams();
-
+  const [showIndex, setShowIndex] = useState(null);
   const resData = useRestaurantMenu(resId);
   resData !== null && console.log("Data: ", resData);
   const data = resData?.data?.cards[2].card.card.info;
   const menuData =
     resData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
   // console.log("-------------MENU DATA: --------------", menuData)
-  const menuItems = menuData?.filter((menuItem) =>
-    menuItem?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  const menuItems = menuData?.filter(
+    (menuItem) =>
+      menuItem?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
-  console.log("-------------MENU ITEMS: --------------", menuItems);
+  // console.log("-------------MENU ITEMS: --------------", menuItems);
   // console.log(first)
+  
   if (!resData) return <Shimmer />;
   return resData == null ? (
     <Shimmer />
@@ -97,7 +101,14 @@ const RestaurantMenu = () => {
             </svg>
           </div>
           {menuItems.map((category, i) => {
-            return  <RestaurantCategory key={i} data={category?.card?.card}/>
+            return (
+              <RestaurantCategory
+                key={i}
+                data={category?.card?.card}
+                showIndex={i === showIndex ? true : false}
+                setShowIndex={() => setShowIndex(i)}
+              />
+            );
           })}
           {/* {menuItems.map((menuItem) => {
             return (

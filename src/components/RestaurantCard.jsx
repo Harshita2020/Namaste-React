@@ -1,4 +1,4 @@
-import {CDN_URL} from "../utils/constants"
+import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
@@ -13,10 +13,7 @@ const RestaurantCard = (props) => {
       <img
         className="rounded-lg"
         alt="res-logo"
-        src={
-          CDN_URL +
-          cloudinaryImageId
-        }
+        src={CDN_URL + cloudinaryImageId}
       />
       <h3 className="font-bold text-lg py-4">{name}</h3>
       <p className="res-cuisine">{cuisines.join(", ")}</p>
@@ -31,11 +28,13 @@ export const isRestaurantOpen = (RestaurantCard) => {
   return (props) => {
     return (
       <div className="relative">
-        <label className="bg-green-600 p-2 border-gray-600-solid rounded-md text-white absolute left-4 w-18 text-center font-bold">Open</label>
-        <RestaurantCard {...props}/>
+        <label className="bg-green-600 p-2 border-gray-600-solid rounded-md text-white absolute left-4 w-18 text-center font-bold">
+          Open
+        </label>
+        <RestaurantCard {...props} />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
-export default RestaurantCard
+export default RestaurantCard;
