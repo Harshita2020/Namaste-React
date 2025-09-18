@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
+import LoggedInContext from "../utils/LoggedInContext";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
   // console.log("props", resData?.info)
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
     resData?.info;
-
+  const { loggedInUser } = useContext(UserContext);
+  const { isLoggedIn } = useContext(LoggedInContext);
   // const { deliveryTime } = resData?.info?.sla;
   // console.log(resData.card.card.info.cloudinaryImageId);
   return (
@@ -20,6 +24,8 @@ const RestaurantCard = (props) => {
       <h4>{avgRating}✨</h4>
       <h4>{costForTwo}</h4>
       <h4>{sla?.deliveryTime} Minutes⌛</h4>
+      <h4 className="font-bold">User- {loggedInUser}</h4>
+      <h4 className="font-bold">Logged In???- {isLoggedIn === true ? "Yes" : "No"}</h4>
     </div>
   );
 };
