@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import { AppLayout } from "../components/NamasteFood";
-
+import { useEffect, useState } from "react";
 import Header from "../src/components/Header";
 import Body from "../src/components/Body";
 import About from "../src/components/About";
@@ -10,17 +10,30 @@ import Error from "./components/Error";
 import NotFound from "./components/NotFound";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { lazy, Suspense } from "react";
+import UserContext from "./utils/UserContext";
+import LoggedInContext from "./utils/LoggedInContext";
 
-
-const Grocery = lazy(() => import("./components/Grocery"))
+const Grocery = lazy(() => import("./components/Grocery"));
 export const AppLayout = () => {
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const data = {
+      name: "Harshita Adya",
+    };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet  />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: userName }}>
+      <div className="app">
+        <LoggedInContext.Provider value={{ isLoggedIn: true }}>
+          <Header />
+        </LoggedInContext.Provider>
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
-};  
+};
 
 const appRouter = createBrowserRouter([
   {
@@ -29,9 +42,9 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Body />,
-        errorElement:<Error/>
+        errorElement: <Error />,
       },
       {
         path: "/about",
@@ -45,13 +58,17 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/grocery",
-        element: <Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
         errorElement: <Error />,
       },
       {
-        path:"/restaurants/:resId",
-        element: <RestaurantMenu/>
-      }
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
+      },
     ],
   },
 
