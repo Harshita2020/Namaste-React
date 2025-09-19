@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 //////////////////////////////////////////////////////////////////////////
 
 /***
@@ -15,29 +15,29 @@ import React from "react";
  * 
  */
 
-const navbar = React.createElement("div", { id: "parent" },
-  React.createElement("ul", { id: "navul" },
-    [
-      React.createElement("li", { className: "navli", key: "home" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Home")
-      ),
-      React.createElement("li", { className: "navli", key: "about" },
-        React.createElement("a", { className: "anchor", href: "#" }, "About")
-      ),
-      React.createElement("li", { className: "navli", key: "contact" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Contact Us")
-      ),
-      React.createElement("li", { className: "navli", key: "login" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Login")
-      ),
-      React.createElement("li", { className: "navli", key: "signup" },
-        React.createElement("a", { className: "anchor", href: "#" }, "Sign Up")
-      )
-    ]
-  )
-);
+// const navbar = React.createElement("div", { id: "parent" },
+//   React.createElement("ul", { id: "navul" },
+//     [
+//       React.createElement("li", { className: "navli", key: "home" },
+//         React.createElement("a", { className: "anchor", href: "#" }, "Home")
+//       ),
+//       React.createElement("li", { className: "navli", key: "about" },
+//         React.createElement("a", { className: "anchor", href: "#" }, "About")
+//       ),
+//       React.createElement("li", { className: "navli", key: "contact" },
+//         React.createElement("a", { className: "anchor", href: "#" }, "Contact Us")
+//       ),
+//       React.createElement("li", { className: "navli", key: "login" },
+//         React.createElement("a", { className: "anchor", href: "#" }, "Login")
+//       ),
+//       React.createElement("li", { className: "navli", key: "signup" },
+//         React.createElement("a", { className: "anchor", href: "#" }, "Sign Up")
+//       )
+//     ]
+//   )
+// );
 
-export default navbar
+// export default navbar
 
 
 //////////////////////////////////////////////

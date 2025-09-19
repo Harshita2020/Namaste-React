@@ -1,30 +1,46 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import resList from "../utils/mockData";
-import RestaurantCard, {isRestaurantOpen} from "./RestaurantCard";
+import RestaurantCard, { isRestaurantOpen } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { SWIGGY_API } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
-const RestaurantOpenCard = isRestaurantOpen(RestaurantCard)
+const RestaurantOpenCard = isRestaurantOpen(RestaurantCard);
+const { loggedInUser, setUserName } = useContext(UserContext);
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredResaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // const handleUserNameChange = (e) => {
+  //     if (e.key === "Enter") {
+  //       setUserName(name)
+  //       console.log("Changed User Name: ",name);
+  //     }
+  //   };
   useEffect(
     () => {
-      console.log("while loading...", listOfRestaurants);
+      // console.log("while loading...", listOfRestaurants);
       fetchData();
     }, ///Callback function - called as soon as the render cycle is finished
     []
   );
 
+  // useEffect(() => {
+  //   document.addEventListener("keypress", handleUserNameChange);
+  //   return () => {
+  //     document.removeEventListener("keypress", handleUserNameChange);
+  //   };
+  // }, [name]);
+
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await fetch(SWIGGY_API);
-      console.log("response", response);
+      // console.log("response", response);
       const json = await response.json();
       // console.log("response", json);
       // console.log(
@@ -65,7 +81,7 @@ const Body = () => {
         Looks like you're offline!!! Please check your internet connection!
       </h1>
     );
-  console.log("listofRestaurant", listOfRestaurants);
+  // console.log("listofRestaurant", listOfRestaurants);
   return isLoading ? (
     <Shimmer />
   ) : (
@@ -79,16 +95,15 @@ const Body = () => {
           onChange={(e) => setSearchText(e.target.value)}
         ></input>
         {/* <div className="flex px-4 py-2"> */}
-
         <button
           className="mx-4 px-4 py-2 bg-green-100 hover:bg-green-200 rounded-lg cursor-pointer"
           onClick={() => {
-            console.log("listOfRestaurants",listOfRestaurants);
+            // console.log("listOfRestaurants", listOfRestaurants);
             const filteredListOfrestaurant = listOfRestaurants.filter((res) =>
               res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
             );
             // const filteredListOfrestaurant = listOfRestaurants.filter((res) => console.log(res?.info?.name))
-            console.log(filteredListOfrestaurant);
+            // console.log(filteredListOfrestaurant);
             filteredListOfrestaurant.length !== 0
               ? setFilteredRestaurants(filteredListOfrestaurant)
               : setFilteredRestaurants([]);
@@ -97,18 +112,30 @@ const Body = () => {
           Search
         </button>
         {/* </div> */}
-        <button className="mx-4 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg cursor-pointer" onClick={handleFilter}>
+        <button
+          className="mx-4 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg cursor-pointer"
+          onClick={handleFilter}
+        >
           {" "}
           Top Rated Restaurants{" "}
         </button>
+        User Name-{" "}
+        <input
+          type="text"
+          className="border border-black rounded-md p-2"
+          value={loginName}
+          // onChange={(e) => setName(e.target.value)}
+        />
       </div>
       {filteredResaurants?.length !== 0 ? (
         <div className="flex flex-wrap">
           {filteredResaurants.map((res) => (
             <Link key={res?.info?.id} to={"/restaurants/" + res?.info?.id}>
-              {
-                res?.info?.isOpen ? <RestaurantOpenCard resData={res}/> : <RestaurantCard resData={res}/>
-              }
+              {res?.info?.isOpen ? (
+                <RestaurantOpenCard resData={res} />
+              ) : (
+                <RestaurantCard resData={res} />
+              )}
               {/* <RestaurantCard resData={res} /> */}
             </Link>
           ))}

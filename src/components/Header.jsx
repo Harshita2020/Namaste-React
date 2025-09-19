@@ -35,7 +35,7 @@ const Header = () => {
           <li className="px-4"> <Link to="/contact-us">Contact</Link></li>
           <li className="px-4"> <Link to="/grocery">Grocery</Link></li>
           <li className="px-4">Cart</li>
-          <button className="px-4 cursor-pointer hover:bg-amber-50 rounded-lg" onClick={() => handleLoginBtnNameToggle()}>{loginBtnName}</button>
+          <button className="px-4 w-20 cursor-pointer hover:bg-amber-50 rounded-lg" onClick={() => handleLoginBtnNameToggle()}>{loginBtnName}</button>
           <li className="px-4 font-bold">{loggedInUser}</li>
         </ul>
       </div>
