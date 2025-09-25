@@ -8,8 +8,8 @@ import { SWIGGY_API } from "../utils/constants";
 import UserContext from "../utils/UserContext";
 
 const RestaurantOpenCard = isRestaurantOpen(RestaurantCard);
-const { loggedInUser, setUserName } = useContext(UserContext);
 const Body = () => {
+  const { loggedInUser, setUserName } = useContext(UserContext);
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredResaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -123,8 +123,8 @@ const Body = () => {
         <input
           type="text"
           className="border border-black rounded-md p-2"
-          value={loginName}
-          // onChange={(e) => setName(e.target.value)}
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)} // updates context
         />
       </div>
       {filteredResaurants?.length !== 0 ? (
