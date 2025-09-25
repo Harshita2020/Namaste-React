@@ -24,12 +24,14 @@ export const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName }}>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <div className="app">
         <LoggedInContext.Provider value={{ isLoggedIn: true }}>
           <Header />
         </LoggedInContext.Provider>
-        <Outlet />
+        <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+          <Outlet />
+        </UserContext.Provider>
       </div>
     </UserContext.Provider>
   );
