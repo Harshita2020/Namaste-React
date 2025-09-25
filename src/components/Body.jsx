@@ -85,8 +85,8 @@ const Body = () => {
   return isLoading ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="m-4">
+    <div className="m-auto">
+      <div className="m-auto text-center">
         <input
           className="m-4 p-2 border border-black border-solid rounded-lg"
           type="text"
@@ -128,16 +128,18 @@ const Body = () => {
         />
       </div>
       {filteredResaurants?.length !== 0 ? (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-center gap-4">
           {filteredResaurants.map((res) => (
-            <Link key={res?.info?.id} to={"/restaurants/" + res?.info?.id}>
-              {res?.info?.isOpen ? (
-                <RestaurantOpenCard resData={res} />
-              ) : (
-                <RestaurantCard resData={res} />
-              )}
-              {/* <RestaurantCard resData={res} /> */}
-            </Link>
+            <div key={res?.info?.id} className="m-2">
+              <Link  to={"/restaurants/" + res?.info?.id}>
+                {res?.info?.isOpen ? (
+                  <RestaurantOpenCard resData={res} />
+                ) : (
+                  <RestaurantCard resData={res} />
+                )}
+                {/* <RestaurantCard resData={res} /> */}
+              </Link>
+            </div>
           ))}
         </div>
       ) : (
