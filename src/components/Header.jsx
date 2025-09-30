@@ -4,12 +4,16 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import LoggedInContext from "../utils/LoggedInContext";
+import { useSelector } from "react-redux";
 const Header = () => {
   let loginBtn = "login"
   const [loginBtnName, setLoginBtnName] = useState("Login")
   const onlineStatus = useOnlineStatus();
   const {loggedInUser} = useContext(UserContext)
   const {isLoggedIn} = useContext(LoggedInContext)
+
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log("CART ITEMS- ", cartItems)
   const handleLoginBtnNameToggle = () => {
     const name = loginBtnName === "Login" ? "Logout" : "Login"
     setLoginBtnName(name)
@@ -20,7 +24,8 @@ const Header = () => {
 
   }
   return (
-    <div className="flex justify-between bg-pink-100 shadow-lg mb-2">
+    <div className="flex justify-between bg-pink-50 shadow-lg  w-full z-10 "> 
+    {/* fixed mb-20 */}
       <div className="logo-container">
         <img className="w-30" src={LOGO_URL} alt="Logo" />
       </div>
@@ -34,7 +39,8 @@ const Header = () => {
           <li className="px-4"> <Link to="/about">About Us</Link></li>
           <li className="px-4"> <Link to="/contact-us">Contact</Link></li>
           <li className="px-4"> <Link to="/grocery">Grocery</Link></li>
-          <li className="px-4">Cart</li>
+          <li className="px-4 font-bold text-lg"> <Link to="/cart">Cart ({cartItems.length} items)</Link></li>
+          {/* <li className="px-4 font-bold text-xl">Cart ({cartItems.length} items)</li> */}
           <button className="px-4 w-20 cursor-pointer hover:bg-amber-50 rounded-lg" onClick={() => handleLoginBtnNameToggle()}>{loginBtnName}</button>
           <li className="px-4 font-bold">{loggedInUser}</li>
         </ul>

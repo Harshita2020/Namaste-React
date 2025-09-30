@@ -17,7 +17,7 @@ class About extends React.Component{
     render(){
 
         return (
-            <>
+            <div style={{marginBottom:"160px"}}>
             <h1>About Us!</h1>
             {/* <User />
             <hr/> */}
@@ -28,7 +28,7 @@ class About extends React.Component{
             <UserContext.Consumer>
                 {(data) => <h1>LOGGED IN USER: {data.loggedInUser}</h1>}
             </UserContext.Consumer>
-            </>
+            </div>
         )
     }
 

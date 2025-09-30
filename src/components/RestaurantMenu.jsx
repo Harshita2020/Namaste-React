@@ -26,7 +26,7 @@ const RestaurantMenu = () => {
     <Shimmer />
   ) : (
     <div className="flex mx-auto">
-      <div className=" px-4 py-8 my-4 flex flex-col text-left mx-auto w-1/2">
+      <div className=" px-4 py-8 my-35 flex flex-col text-left mx-auto w-1/2 ">
         <h1 className="font-bold py-2 my-4 text-left text-3xl ">{data.name}</h1>
         <div
           className="font-bold border border-gray-200 rounded-2xl p-6 
