@@ -22,24 +22,32 @@
 
 
 # Namaste Food
-/**
- *
- * - Header
- *    - Logo
- *    - Nav Items
- * - Body
- *    - Search
- *    - Resaurant Container
- *      - Res cards
- *        - Image
- *        - name of res
- *        - rating, cuisine,
- * - Footer
- *    - CopyRight
- *    - Links
- *    - Address
- *    - Contact
- */
-
+  - Header
+     - Logo
+     - Nav Items
+  - Body
+     - Search
+     - Resaurant Container
+       - Res cards
+         - Image
+         - name of res
+         - rating, cuisine,
+  - Footer
+     - CopyRight
+     - Links
+     - Address
+     - Contact
+ 
 
  - REACT HOOKS - USESTATE
+
+    # Redux Toolkit
+    - Install @reduxjs/toolkit and react-redux
+    - Build our store
+    - Connect store to app
+    - Slice (cartSlice)
+    - dispatch (action)
+    - Selector
+
+
+

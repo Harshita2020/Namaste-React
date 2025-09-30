@@ -1,8 +1,20 @@
 import React from "react";
 import { CDN_URL } from "../utils/constants";
-
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice.js";
 const ItemList = ({ data }) => {
   console.log("Item data, ", data);
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    // Dispatch an action
+    dispatch(addItem(item)); 
+    // it adds pizza to the action payload
+    /**
+     * {
+     *  payload: "pizza"
+     * }
+     */
+  }
   return (
     <div>
       {data.map((item, i) => {
@@ -23,7 +35,9 @@ const ItemList = ({ data }) => {
 
             <div className="w-3/12 items-center relative">
               <div className="absolute bottom-0 right-7 ">
-                {item?.card?.info?.imageId && <button className="font-bold bg-gray-50 border border-gray-300 text-green-600 shadow-lg py-2 px-4 rounded-lg cursor-pointer">
+                {item?.card?.info?.imageId && <button className="font-bold bg-gray-50 border border-gray-300 text-green-600 shadow-lg py-2 px-4 rounded-lg cursor-pointer"
+                onClick={() => handleAddItem(item)}
+                >
                   ADD
                 </button>}
               </div>
