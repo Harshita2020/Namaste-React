@@ -10,6 +10,7 @@ import UserContext from "../utils/UserContext";
 const RestaurantOpenCard = isRestaurantOpen(RestaurantCard);
 const Body = () => {
   const { loggedInUser, setUserName } = useContext(UserContext);
+  // const { isLoggedIn, setLoggedIn } = useContext(UserContext);
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredResaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");

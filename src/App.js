@@ -19,23 +19,28 @@ import Cart from "./components/Cart.jsx";
 const Grocery = lazy(() => import("./components/Grocery"));
 export const AppLayout = () => {
   const [userName, setUserName] = useState("");
+  const [isLoggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     const data = {
       name: "Harshita Adya",
+      isLoggedIn: true
     };
+
     setUserName(data.name);
+    setLoggedIn(data.isLoggedIn)
   }, []);
 
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div className="app">
-          <LoggedInContext.Provider value={{ isLoggedIn: true }}>
+          <LoggedInContext.Provider value={{ isLoggedIn: isLoggedIn, setLoggedIn }}>
             <Header />
-          </LoggedInContext.Provider>
-          <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}>
+
             <Outlet />
-          </UserContext.Provider>
+            {/* <UserContext.Provider value={{ loggedInUser: "Elon Musk" }}> */}
+            {/* </UserContext.Provider> */}
+          </LoggedInContext.Provider>
         </div>
       </UserContext.Provider>
     </Provider>

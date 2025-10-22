@@ -9,15 +9,19 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
   const resData = useRestaurantMenu(resId);
   resData !== null && console.log("Data: ", resData);
-  const data = resData?.data?.cards[2].card.card.info;
+  console.log("RES MENU DATA", resData)
+  const data = resData;
+  console.log("DATA", data)
   const menuData =
     resData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-  // console.log("-------------MENU DATA: --------------", menuData)
-  const menuItems = menuData?.filter(
-    (menuItem) =>
-      menuItem?.card?.card?.["@type"] ===
-      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-  );
+  const mockMenuData =
+    resData?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  console.log("-------------MENU DATA: --------------", mockMenuData)
+  // const menuItems = menuData?.filter(
+  //   (menuItem) =>
+  //     menuItem?.card?.card?.["@type"] ===
+  //     "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  // );
   // console.log("-------------MENU ITEMS: --------------", menuItems);
   // console.log(first)
   
@@ -27,7 +31,7 @@ const RestaurantMenu = () => {
   ) : (
     <div className="flex mx-auto">
       <div className=" px-4 py-8 my-35 flex flex-col text-left mx-auto w-1/2 ">
-        <h1 className="font-bold py-2 my-4 text-left text-3xl ">{data.name}</h1>
+        <h1 className="font-bold py-2 my-4 text-left text-3xl ">{data.restaurantName}</h1>
         <div
           className="font-bold border border-gray-200 rounded-2xl p-6 
   shadow-[0_6px_10px_rgba(0,0,0,0.1),4px_0_6px_rgba(0,0,0,0.05),-4px_0_6px_rgba(0,0,0,0.05)] bg-white"
@@ -100,7 +104,7 @@ const RestaurantMenu = () => {
               />
             </svg>
           </div>
-          {menuItems.map((category, i) => {
+          {mockMenuData.map((category, i) => {
             return (
               <RestaurantCategory
                 key={i}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ItemList from "./ItemList";
 
 const RestaurantCategory = ({ data, showIndex, setShowIndex }) => {
+  console.log("CATEGOTY DATA", data)
   const handleClick = () => {
     console.log("Clicked!!");
     setShowIndex();
@@ -14,7 +15,7 @@ const RestaurantCategory = ({ data, showIndex, setShowIndex }) => {
           onClick={handleClick}
         >
           <span>
-            {data?.title} ({data?.itemCards.length})
+            {data?.title} ({data?.itemCards?.length || "-"})
           </span>
           <span>🔽</span>
         </div>

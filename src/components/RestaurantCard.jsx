@@ -9,7 +9,9 @@ const RestaurantCard = (props) => {
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } =
     resData?.info;
   const { loggedInUser } = useContext(UserContext);
-  const { isLoggedIn } = useContext(LoggedInContext);
+   const { isLoggedIn } = useContext(LoggedInContext);
+  //  const { isLoggedIn, userName } = useSelector(state => state.login);
+  // const { isLoggedIn } = useContext(LoggedInContext);
   // const { deliveryTime } = resData?.info?.sla;
   // console.log(resData.card.card.info.cloudinaryImageId);
   return (
