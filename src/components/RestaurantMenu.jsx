@@ -7,11 +7,13 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const [showIndex, setShowIndex] = useState(null);
-  const resData = useRestaurantMenu(resId);
+  // const resData = useRestaurantMenu(resId);
+  const resData = useRestaurantMenu(987654);
+  // const mockResIds = [987654, ]
   resData !== null && console.log("Data: ", resData);
   console.log("RES MENU DATA", resData)
   const data = resData;
-  console.log("DATA", data)
+  console.log("DATA---", data)
   const menuData =
     resData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
   const mockMenuData =
