@@ -17,7 +17,7 @@ const ItemList = ({ data }) => {
   }
   return (
     <div>
-      {data.map((item, i) => {
+      {data && data.map((item, i) => {
         return (
           <div
             key={item?.card?.info?.id}
